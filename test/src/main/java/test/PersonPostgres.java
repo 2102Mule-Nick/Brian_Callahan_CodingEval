@@ -104,18 +104,38 @@ public class PersonPostgres {
 			
 			while (rs.next()) {
 				//log.info("User found in DB");
-				System.out.println(rs.getString("person_id"));
+				System.out.println(rs.getInt("fatherid"));
 				person = new Person();
 				person.setPersonid(rs.getInt("person_id"));
 				person.setFirstName(rs.getString("firstname"));
 				person.setLastName(rs.getString("lastname"));
-				person.setFatherid(rs.getInt("fatherid"));
-				
+				person.setFatherid(rs.getInt("fatherid"));				
 			}			
 		} catch (SQLException e) {
 			//log.error("Failure to connect to DB", e);
 		}
 		return person.getFatherid();
+	}
+	public int getMotherIDByName(String firstname, String lastname){//	
+		Person person = null;		
+		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);) {//
+			String sql = "select motherid from persons where firstname = '" + firstname + "' and lastname = '" + lastname + "' ;";
+			Statement stmt = conn.createStatement();			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				//log.info("User found in DB");
+				System.out.println(rs.getInt("motherid"));
+				person = new Person();
+				person.setPersonid(rs.getInt("person_id"));
+				person.setFirstName(rs.getString("firstname"));
+				person.setLastName(rs.getString("lastname"));
+				person.setMotherid(rs.getInt("motherid"));				
+			}			
+		} catch (SQLException e) {
+			//log.error("Failure to connect to DB", e);
+		}
+		return person.getMotherid();
 	}
 	
 		

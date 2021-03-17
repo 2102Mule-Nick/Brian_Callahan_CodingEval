@@ -19,6 +19,10 @@ public class UpdatePersonPostgres {
 			
 			System.out.println(userPost.getFatherIDByName(firstname, lastname)+" fatherss");
 		}
+		if (userPost.getPersonByName(firstname,lastname)!=null) {				
+			
+			System.out.println(userPost.getMotherIDByName(firstname, lastname)+" mothersss");
+		}
 			//Menu menu = new Menu();		
 			//menu.menu(person,scanner);
 		
