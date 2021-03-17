@@ -4,8 +4,6 @@ import java.util.Scanner;
 public class CreatePersonPostgres {
 
 	public void register(Scanner scanner) {
-
-		//log.info("Registering user");
 		System.out.println("Creating a Person");
 		System.out.println("Enter the first name");
 		String firstname = scanner.next();
@@ -34,7 +32,6 @@ public class CreatePersonPostgres {
 		}
 		
 		Person person = new Person(firstname,lastname,userPost.getIDByName(fatherfirstname, lastname),userPost.getIDByName(motherfirstname, lastname));	
-		//Person person = new Person(firstname,lastname);
 		
 		try {
 			if (userPost.getPersonByName(firstname,lastname)==null) {				
@@ -42,7 +39,6 @@ public class CreatePersonPostgres {
 				Menu menu = new Menu();		
 				menu.menu(person,scanner);
 			}else {
-				//log.info("User not available");
 				System.out.println("That name is already entered please enter a different one");
 				CreatePersonPostgres create = new CreatePersonPostgres();
 				create.register(scanner);	
